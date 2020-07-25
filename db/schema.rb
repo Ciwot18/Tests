@@ -38,13 +38,12 @@ ActiveRecord::Schema.define(version: 2020_07_24_205324) do
     t.string "role", default: "user", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.bigint "avatars_id", default: 1, null: false
+    t.integer "avatar_id", default: 1, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["avatars_id"], name: "index_users_on_avatars_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -58,18 +57,15 @@ ActiveRecord::Schema.define(version: 2020_07_24_205324) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.bigint "users_id", null: false
-    t.bigint "vehicle_classes_id", null: false
-    t.bigint "fuels_id", null: false
+    t.integer "user_id", null: false
+    t.integer "vehicle_class_id", null: false
+    t.integer "fuel_id", null: false
     t.string "name", null: false
     t.string "model", null: false
     t.datetime "purchase_date", null: false
     t.datetime "vehicle_dob", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["fuels_id"], name: "index_vehicles_on_fuels_id"
-    t.index ["users_id"], name: "index_vehicles_on_users_id"
-    t.index ["vehicle_classes_id"], name: "index_vehicles_on_vehicle_classes_id"
   end
 
 end

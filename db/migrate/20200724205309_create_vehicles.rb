@@ -1,9 +1,9 @@
 class CreateVehicles < ActiveRecord::Migration[5.2]
   def change
     create_table :vehicles do |t|
-      t.references :users, null: false
-      t.references :vehicle_classes, null: false
-      t.references :fuels, null: false
+      t.integer :user_id, null: false
+      t.integer :vehicle_class_id, null: false
+      t.integer :fuel_id, null: false
 
       t.string :name, null: false
       t.string :model, null: false
